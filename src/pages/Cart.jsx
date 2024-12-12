@@ -17,12 +17,12 @@ const Cart = () => {
 	// Calculate total
 	const total = subtotal + shipping;
 	return (
-		<div className='w-full h-[90vh] '>
+		<div className='w-full  min-h-[88vh] h-full flex flex-col'>
 			<h1 className='text-2xl font-bold text-start pl-4 '>
 				Your Cart Items ({cart?.length})
 			</h1>
-			<div className='w-full flex mt-4 gap-2 flex-col lg:flex-row p-4 lg:p-0'>
-				<div className='flex justify-start flex-col lg:max-w-[70%] w-full items-center  gap-2 '>
+			<div className='w-full flex mt-2 gap-2 flex-col lg:flex-row p-4 lg:p-0'>
+				<div className='flex justify-start flex-col lg:max-w-[70%] w-full items-center   gap-2 h-[84vh] overflow-y-scroll  no-scrollbar'>
 					{cart &&
 						cart?.map((product) => {
 							return (
