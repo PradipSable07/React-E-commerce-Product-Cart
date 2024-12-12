@@ -8,7 +8,7 @@ const Home = () => {
 	const { cart } = useCart();
 	return (
 		<main className="bg-slate-50">
-			<nav className='  border-b py-4   border-gray-200 sticky top-0 z-40 bg-white'>
+			<nav className='  border-b py-4 px-4  border-gray-200 sticky top-0 z-40 bg-white'>
 				<div className='flex justify-between items-center max-w-7xl mx-auto w-full'>
 					<Link to={"/"} className='text-2xl  text-red-700 font-bolder w-full'>
 						E-Commerce
@@ -22,7 +22,7 @@ const Home = () => {
 					</Link>
 				</div>
 			</nav>
-            <section className="max-w-7xl mx-auto pt-4 ">
+            <section className="max-w-7xl mx-auto pt-4 px-2 ">
 
 			<Outlet />
             </section>
