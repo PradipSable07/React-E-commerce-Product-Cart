@@ -7,16 +7,16 @@ const ProductsList = () => {
 
     console.log(products);
     if(isLoading){
-        return <div className="w-full flex justify-center items-center h-screen">
-            <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
+        return <div className="flex items-center justify-center w-full h-screen">
+            <div className="w-32 h-32 border-b-2 border-gray-900 rounded-full animate-spin"></div>
         </div>
     }
     if(isError){
-        return  <div className="w-full flex justify-center item-center h-screen">
+        return  <div className="flex justify-center w-full h-screen item-center">
         <h1 className="text-2xl font-bold text-red-600">{error.message}</h1>
     </div>
     }
-	return <div className='w-full grid   mx-auto grid-cols-1 md:grid-cols-3  lg:grid-cols-4 gap-4 h-[88vh] overflow-y-scroll no-scrollbar'>
+	return <div className='w-full grid  mx-auto grid-cols-1 md:grid-cols-2  lg:grid-cols-4 gap-4 h-[88vh] overflow-y-scroll no-scrollbar'>
         {products && products?.map((product)=>{
 
             return <ProductCard key={product?.id} product={ product} />

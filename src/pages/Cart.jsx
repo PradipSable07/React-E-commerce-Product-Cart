@@ -17,31 +17,31 @@ const Cart = () => {
 	// Calculate total
 	const total = subtotal + shipping;
 	return (
-		<div className='w-full  min-h-[88vh] h-full flex flex-col'>
-			<h1 className='text-2xl font-bold text-start pl-4 '>
+		<div className='w-full h-[calc(100vh-12vh)] lg:min-h-[88vh] lg:h-full flex flex-col overflow-hidden'>
+			<h1 className='pl-4 text-2xl font-bold text-start '>
 				Your Cart Items ({cart?.length})
 			</h1>
-			<div className='w-full flex mt-2 gap-2 flex-col lg:flex-row p-4 lg:p-0'>
-				<div className='flex justify-start flex-col lg:max-w-[70%] w-full items-center   gap-2 h-[84vh] overflow-y-scroll  no-scrollbar'>
+			<div className='flex flex-col-reverse w-full gap-2 p-4 mt-2 lg:p-0 lg:flex-row'>
+				<div className='flex justify-start flex-col lg:max-w-[70%] w-full items-center   gap-2 h-[calc(100vh-40vh)] lg:h-[84vh] overflow-y-scroll  no-scrollbar'>
 					{cart &&
 						cart?.map((product) => {
 							return (
 								<div
 									key={product?.id}
-									className=' flex justify-start items-center rounded-lg w-full  border bg-white '>
-									<div className='max-h-36 p-2 max-w-36  w-full h-full'>
+									className='flex flex-col items-center justify-start w-full bg-white border rounded-lg md:flex-row '>
+									<div className='w-full h-full p-2 max-h-36 max-w-36'>
 										<img
 											src={product?.image}
 											alt=''
-											className='w-full h-full object-contain rounded-t-lg'
+											className='object-contain w-full h-full rounded-t-lg'
 										/>
 									</div>
-									<div className='flex flex-col w-full h-full p-2  '>
-										<div className='w-full  '>
-											<div className='w-full flex justify-between items-center'>
+									<div className='flex flex-col w-full h-full p-2 '>
+										<div className='w-full '>
+											<div className='flex items-center justify-between w-full'>
 												<h1 className='text-lg font-bold'>{product?.title}</h1>
 												<button
-													className='p-2 hover:bg-green-400 border hover:text-white text-xl rounded-md'
+													className='p-2 text-xl border rounded-md hover:bg-green-400 hover:text-white'
 													onClick={() =>
 														dispatch({
 															type: "REMOVE_FROM_CART",
@@ -56,13 +56,13 @@ const Cart = () => {
 													product?.description.slice(0, 200)}
 											</p>
 										</div>
-										<div className='flex justify-start gap-4 items-center p-2  border-t rounded-md'>
-											<div className='text-md w-full  font-bold'>
-												$ <span className=' font-normal'>{product?.price}</span>
+										<div className='flex items-center justify-start gap-4 p-2 border-t rounded-md'>
+											<div className='w-full font-bold text-md'>
+												$ <span className='font-normal '>{product?.price}</span>
 											</div>
-											<div className='w-full flex justify-between items-center max-w-[20%] border rounded-md'>
+											<div className='w-full flex justify-between items-center md:max-w-[20%] border rounded-md'>
 												<button
-													className=' px-4 py-2 hover:bg-red-500 border-r hover:text-white text-md  hover-cursor-pointer'
+													className='px-4 py-2 border-r hover:bg-red-500 hover:text-white text-md hover-cursor-pointer'
 													onClick={() =>
 														dispatch({
 															type: "UPDATE_QUANTITY",
@@ -74,11 +74,11 @@ const Cart = () => {
 													}>
 													-
 												</button>
-												<p className='text-md w-full text-center px-4'>
+												<p className='w-full px-4 text-center text-md'>
 													{product.quantity}
 												</p>
 												<button
-													className=' px-4 py-2 hover:bg-green-500 border-l hover:text-white text-md  '
+													className='px-4 py-2 border-l hover:bg-green-500 hover:text-white text-md'
 													onClick={() =>
 														dispatch({
 															type: "UPDATE_QUANTITY",
@@ -98,24 +98,24 @@ const Cart = () => {
 						})}
 				</div>
 				<div className='flex justify-center flex-col lg:max-w-[30%] w-full h-fit items-start gap-2 border p-4 bg-white rounded-lg'>
-					<h1 className='text-2xl font-bold'>Order Summary</h1>
-					<div className='flex justify-between items-center p-2 w-full '>
-						<p className='text-lg font-bold'>Subtotal: </p>
-						<p className='text-lg font-bold'>${subtotal.toFixed(2)}</p>
+					<h1 className='font-bold md:text-2xl'>Order Summary</h1>
+					<div className='flex items-center justify-between w-full lg:p-2 '>
+						<p className='font-bold lg:text-lg'>Subtotal: </p>
+						<p className='font-bold lg:text-lg'>${subtotal.toFixed(2)}</p>
 					</div>
-					<div className='flex justify-between items-center p-2 w-full '>
-						<p className='text-lg font-bold'>Shipping charges:</p>
-						<p className='text-lg font-bold'> ${shipping.toFixed(2)} </p>
+					<div className='flex items-center justify-between w-full lg:p-2 '>
+						<p className='font-bold lg:text-lg'>Shipping charges:</p>
+						<p className='font-bold lg:text-lg'> ${shipping.toFixed(2)} </p>
 					</div>
-					<div className='flex justify-between items-center p-2 w-full'>
-						<p className='text-lg font-bold'>Total: ${total.toFixed(2)}</p>
+					<div className='flex items-center justify-between w-full lg:p-2'>
+						<p className='font-bold lg:text-lg'>Total: ${total.toFixed(2)}</p>
 
 						{/* <button
-							className='p-2 hover:bg-green-400 border hover:text-white text-sm rounded-md'
+							className='p-2 text-sm border rounded-md hover:bg-green-400 hover:text-white'
 							onClick={() => toast.success("Order Placed Successfully")}>
 							<span> Proceed to Checkout</span>
 						</button> */}
-						<button className='cartBtn ' onClick={() => {toast.success("Order Placed Successfully"); dispatch({type:"CLEAR_CART"})}}>
+						<button className=' cartBtn' onClick={() => {toast.success("Order Placed Successfully"); dispatch({type:"CLEAR_CART"})}}>
 							<svg
 								className='cart '
 								fill='white'
